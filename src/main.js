@@ -12,6 +12,8 @@ import { alertHistory } from './modules/alerts/alertHistory.js';
 import { thresholdStore } from './modules/alerts/thresholdConfig.js';
 import { Router } from './modules/ui/router.js';
 
+import { dashboardView } from './modules/ui/views/dashboardView.js';
+
 // Global Application State Container
 export const appState = {
   buffer: new TimeSeriesBuffer(),
@@ -44,7 +46,9 @@ function initApp() {
   appState.simulator.start();
 
   // 3. Setup SPA Router
-  appState.router = new Router({}, {
+  appState.router = new Router({
+    dashboard: dashboardView
+  }, {
     container: document.getElementById('view-container'),
     onNavigate: (routeName) => onRouteChanged(routeName)
   });
