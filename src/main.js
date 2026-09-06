@@ -15,6 +15,7 @@ import { Router } from './modules/ui/router.js';
 import { dashboardView } from './modules/ui/views/dashboardView.js';
 import { analyticsView } from './modules/ui/views/analyticsView.js';
 import { weatherView } from './modules/ui/views/weatherView.js';
+import { alertsView } from './modules/ui/views/alertsView.js';
 
 // Global Application State Container
 export const appState = {
@@ -51,7 +52,8 @@ function initApp() {
   appState.router = new Router({
     dashboard: dashboardView,
     analytics: analyticsView,
-    weather: weatherView
+    weather: weatherView,
+    alerts: alertsView
   }, {
     container: document.getElementById('view-container'),
     onNavigate: (routeName) => onRouteChanged(routeName)
