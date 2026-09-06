@@ -1,8 +1,8 @@
 // Verification script for Module 2: Telemetry & Ingestion
-import { validateReading, SENSOR_METADATA } from './src/modules/telemetry/sensorSchema.js';
-import { TimeSeriesBuffer } from './src/modules/telemetry/timeSeriesBuffer.js';
-import { HardwareSimulator } from './src/modules/telemetry/simulator.js';
-import { CsvExporter } from './src/modules/telemetry/csvExporter.js';
+import { validateReading, SENSOR_METADATA } from '../src/modules/telemetry/sensorSchema.js';
+import { TimeSeriesBuffer } from '../src/modules/telemetry/timeSeriesBuffer.js';
+import { HardwareSimulator } from '../src/modules/telemetry/simulator.js';
+import { CsvExporter } from '../src/modules/telemetry/csvExporter.js';
 
 console.log('Testing Module 2: Telemetry & Ingestion...');
 
