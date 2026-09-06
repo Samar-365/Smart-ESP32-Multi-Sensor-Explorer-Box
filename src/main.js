@@ -16,6 +16,7 @@ import { dashboardView } from './modules/ui/views/dashboardView.js';
 import { analyticsView } from './modules/ui/views/analyticsView.js';
 import { weatherView } from './modules/ui/views/weatherView.js';
 import { alertsView } from './modules/ui/views/alertsView.js';
+import { aboutView } from './modules/ui/views/aboutView.js';
 
 // Global Application State Container
 export const appState = {
@@ -53,7 +54,8 @@ function initApp() {
     dashboard: dashboardView,
     analytics: analyticsView,
     weather: weatherView,
-    alerts: alertsView
+    alerts: alertsView,
+    about: aboutView
   }, {
     container: document.getElementById('view-container'),
     onNavigate: (routeName) => onRouteChanged(routeName)
