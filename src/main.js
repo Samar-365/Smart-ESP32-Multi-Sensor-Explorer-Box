@@ -14,6 +14,7 @@ import { Router } from './modules/ui/router.js';
 
 import { dashboardView } from './modules/ui/views/dashboardView.js';
 import { analyticsView } from './modules/ui/views/analyticsView.js';
+import { weatherView } from './modules/ui/views/weatherView.js';
 
 // Global Application State Container
 export const appState = {
@@ -49,7 +50,8 @@ function initApp() {
   // 3. Setup SPA Router
   appState.router = new Router({
     dashboard: dashboardView,
-    analytics: analyticsView
+    analytics: analyticsView,
+    weather: weatherView
   }, {
     container: document.getElementById('view-container'),
     onNavigate: (routeName) => onRouteChanged(routeName)
