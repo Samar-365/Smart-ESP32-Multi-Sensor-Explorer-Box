@@ -36,7 +36,7 @@ const newAlert = {
   value: 37.5,
   unit: '°C',
   level: 'critical',
-  badge: '🔴 Critical',
+  badge: '● Critical',
   message: 'Temperature (37.5 °C) exceeded critical limit.'
 };
 const logged = store.logAlert(newAlert);

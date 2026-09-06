@@ -33,12 +33,12 @@ export const analyticsView = {
           <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Deep Statistical Modeling, Trend Regression, and Dual-Axis Telemetry</p>
         </div>
         <div style="display: flex; gap: 6px; background: rgba(0,0,0,0.25); padding: 4px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); flex-wrap: wrap;">
-          <button class="action-btn btn-secondary analytics-tab-btn active" data-tab="trends">📈 Trends</button>
-          <button class="action-btn btn-secondary analytics-tab-btn" data-tab="stats">📋 Statistics</button>
-          <button class="action-btn btn-secondary analytics-tab-btn" data-tab="comparison">⚖️ Comparison</button>
-          <button class="action-btn btn-secondary analytics-tab-btn" data-tab="thresholds">🎯 Thresholds</button>
-          <button class="action-btn btn-secondary analytics-tab-btn" data-tab="anomalies">⚠️ Anomalies</button>
-          <button class="action-btn btn-secondary analytics-tab-btn" data-tab="spatial">📡 Spatial (PIR/Dist)</button>
+          <button class="action-btn btn-secondary analytics-tab-btn active" data-tab="trends">Trends</button>
+          <button class="action-btn btn-secondary analytics-tab-btn" data-tab="stats">Statistics</button>
+          <button class="action-btn btn-secondary analytics-tab-btn" data-tab="comparison">Comparison</button>
+          <button class="action-btn btn-secondary analytics-tab-btn" data-tab="thresholds">Thresholds</button>
+          <button class="action-btn btn-secondary analytics-tab-btn" data-tab="anomalies">Anomalies</button>
+          <button class="action-btn btn-secondary analytics-tab-btn" data-tab="spatial">Spatial (PIR/Dist)</button>
         </div>
       </div>
 
@@ -173,8 +173,8 @@ export const analyticsView = {
           <!-- PIR Motion Analytics (FR-04.8) -->
           <div class="data-table-container" style="padding: 22px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-              <h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
-                <span style="color: var(--color-pink);">📡</span> Motion Analytics (PIR)
+              <h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary);">
+                Motion Analytics (PIR)
               </h3>
               <span class="status-tag tag-normal" id="spatial-motion-level">Activity: LOW</span>
             </div>
@@ -195,8 +195,8 @@ export const analyticsView = {
 
           <!-- Ultrasonic Distance Analytics (FR-04.9) -->
           <div class="data-table-container" style="padding: 22px;">
-            <h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;">
-              <span style="color: var(--color-normal);">📏</span> Distance Analytics (HC-SR04)
+            <h3 style="font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 16px;">
+              Distance Analytics (HC-SR04)
             </h3>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; font-size: 13px;">
               <div style="background: rgba(255,255,255,0.03); padding: 10px 14px; border-radius: var(--radius-sm);">
@@ -324,10 +324,10 @@ export const analyticsView = {
 
   renderTrendSection(history = []) {
     const filtered = appState.buffer.getByTimeRange(this.selectedRange);
-    const meta = SENSOR_METADATA[this.selectedSensor] || { name: this.selectedSensor, unit: '', color: '#06b6d4' };
+    const meta = SENSOR_METADATA[this.selectedSensor] || { name: this.selectedSensor, unit: '', color: '#ffffff' };
 
     chartManager.renderTrendChart('chart-analytics-trend', filtered, this.selectedSensor, {
-      color: meta.color,
+      color: '#ffffff',
       label: meta.name,
       unit: meta.unit
     });
@@ -343,7 +343,7 @@ export const analyticsView = {
           <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">DIRECTIONAL TREND</div>
           <div style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
             <span style="font-size: 24px;">${trend.icon}</span>
-            <span style="font-size: 18px; font-weight: 700; color: ${trend.color};">${trend.label}</span>
+            <span style="font-size: 18px; font-weight: 700; color: #ffffff;">${trend.label}</span>
           </div>
           <p style="font-size: 12px; color: var(--text-secondary); line-height: 1.4;">${trend.summary}</p>
         </div>
@@ -450,9 +450,9 @@ export const analyticsView = {
     const anomalies = AnomalyDetector.scanAll(history, latestReading);
     if (anomalies.length === 0) {
       listEl.innerHTML = `
-        <div style="background: rgba(16, 185, 129, 0.05); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: var(--radius-md); padding: 20px; text-align: center;">
-          <div style="font-size: 24px; margin-bottom: 6px;">🟢</div>
-          <strong style="color: var(--color-normal); font-size: 14px;">No Statistical Anomalies Detected</strong>
+        <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px; text-align: center;">
+          <div style="font-size: 24px; margin-bottom: 6px;">●</div>
+          <strong style="color: var(--text-primary); font-size: 14px;">No Statistical Anomalies Detected</strong>
           <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">All 6 environmental parameters are tracking within their 2.5σ normal baseline curves.</p>
         </div>
       `;
@@ -460,9 +460,9 @@ export const analyticsView = {
     }
 
     listEl.innerHTML = anomalies.map(a => `
-      <div style="background: rgba(239, 68, 68, 0.08); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: var(--radius-md); padding: 16px;">
+      <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: 16px;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
-          <strong style="color: var(--color-critical); font-size: 14px;">⚠️ ANOMALY DETECTED: ${a.sensorName}</strong>
+          <strong style="color: var(--text-primary); font-size: 14px;">● ANOMALY DETECTED: ${a.sensorName}</strong>
           <span class="status-tag tag-critical">Z = ${a.zScore}σ</span>
         </div>
         <p style="font-size: 13px; color: var(--text-primary); margin-bottom: 8px;">${a.message}</p>

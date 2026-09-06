@@ -8,10 +8,10 @@
 import { SENSOR_METADATA } from '../telemetry/sensorSchema.js';
 
 export const TREND_TYPES = {
-  INCREASING: { id: 'increasing', label: 'Increasing', icon: '↗', color: '#f59e0b' },
-  DECREASING: { id: 'decreasing', label: 'Decreasing', icon: '↘', color: '#3b82f6' },
-  STABLE: { id: 'stable', label: 'Stable', icon: '→', color: '#10b981' },
-  RAPIDLY_CHANGING: { id: 'rapidly_changing', label: 'Rapidly Changing', icon: '⚡', color: '#ef4444' }
+  INCREASING: { id: 'increasing', label: 'Increasing', icon: '↗', color: '#ffffff' },
+  DECREASING: { id: 'decreasing', label: 'Decreasing', icon: '↘', color: '#cbd5e1' },
+  STABLE: { id: 'stable', label: 'Stable', icon: '→', color: '#94a3b8' },
+  RAPIDLY_CHANGING: { id: 'rapidly_changing', label: 'Rapidly Changing', icon: '⚡', color: '#ffffff' }
 };
 
 // Sensitivity criteria for classification (units per hour)

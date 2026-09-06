@@ -21,8 +21,14 @@ export const weatherView = {
           <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">OpenWeather REST Telemetry Synchronized with Physical ESP32 Sensors</p>
         </div>
         <div style="display: flex; gap: 8px;">
-          <button class="action-btn btn-secondary" id="btn-weather-refresh"><span>🔄 Refresh Weather</span></button>
-          <button class="action-btn btn-secondary" id="btn-weather-config"><span>⚙️ API & City Config</span></button>
+          <button class="action-btn btn-secondary" id="btn-weather-refresh">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2"/></svg>
+            <span>Refresh Weather</span>
+          </button>
+          <button class="action-btn btn-secondary" id="btn-weather-config">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span>API & City Config</span>
+          </button>
         </div>
       </div>
 
@@ -50,14 +56,16 @@ export const weatherView = {
       <!-- Primary Weather Grid -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 22px; margin-bottom: 28px;">
         <!-- Card 1: Outdoor Live Weather (SRS Section 7 FR-03 Example) -->
-        <div class="sensor-card" style="--card-accent: #38bdf8; padding: 26px;">
+        <div class="sensor-card" style="padding: 26px;">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
             <div>
               <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-primary);">OUTDOOR ENVIRONMENT</span>
               <h3 style="font-size: 20px; font-weight: 800; margin-top: 2px;" id="weather-city-display">New Delhi, IN</h3>
               <span style="font-size: 12px; color: var(--text-muted);" id="weather-source-badge">Mock Demo Feed</span>
             </div>
-            <span style="font-size: 48px;" id="weather-main-icon">☁️</span>
+            <div id="weather-main-icon" style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--text-primary);">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>
+            </div>
           </div>
 
           <div style="display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px;">
@@ -89,7 +97,7 @@ export const weatherView = {
         </div>
 
         <!-- Card 2: Indoor vs Outdoor Differential Analysis -->
-        <div class="sensor-card" style="--card-accent: #10b981; padding: 26px;">
+        <div class="sensor-card" style="padding: 26px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
             <div>
               <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-normal);">ENVIRONMENTAL DELTA</span>
@@ -232,8 +240,8 @@ export const weatherView = {
     const visEl = document.getElementById('weather-visibility-display');
 
     if (cityEl) cityEl.textContent = `${w.city}, ${w.country || 'IN'}`;
-    if (srcEl) srcEl.textContent = w.isLive ? '🟢 OpenWeather Live API' : '🟡 Mock Demo Feed';
-    if (iconEl) iconEl.textContent = w.icon;
+    if (srcEl) srcEl.textContent = w.isLive ? 'OpenWeather Live API' : 'Mock Demo Feed';
+    if (iconEl) iconEl.innerHTML = this.getWeatherSvg(w.condition || w.mainCondition, 36);
     if (tempEl) tempEl.textContent = `${w.temperature}°C`;
     if (condEl) condEl.textContent = w.condition;
     if (feelsEl) feelsEl.textContent = `Feels Like: ${w.feelsLike}°C`;
@@ -248,7 +256,7 @@ export const weatherView = {
       hourlyEl.innerHTML = w.hourlyForecast.map(h => `
         <div style="background: rgba(255,255,255,0.03); padding: 12px 6px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle);">
           <div style="font-size: 11px; color: var(--text-muted);">${h.time}</div>
-          <div style="font-size: 22px; margin: 4px 0;">${h.icon}</div>
+          <div style="display: flex; justify-content: center; align-items: center; height: 28px; margin: 4px 0; color: var(--text-secondary);">${this.getWeatherSvg(h.time.includes('20:') || h.time.includes('22:') ? 'night' : 'cloud', 20)}</div>
           <div style="font-size: 14px; font-weight: 700; font-family: var(--font-mono);">${h.temp}°</div>
         </div>
       `).join('');
@@ -260,7 +268,7 @@ export const weatherView = {
       dailyEl.innerHTML = w.dailyForecast.map(d => `
         <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.02); padding: 10px 14px; border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); font-size: 13px;">
           <strong style="width: 80px; color: var(--text-primary);">${d.day}</strong>
-          <span style="font-size: 18px;">${d.icon}</span>
+          <div style="display: flex; align-items: center; justify-content: center; width: 24px; color: var(--text-secondary);">${this.getWeatherSvg(d.condition, 18)}</div>
           <span style="color: var(--text-secondary); flex: 1; margin-left: 14px;">${d.condition}</span>
           <div style="font-family: var(--font-mono);">
             <strong style="color: var(--text-primary);">${d.max}°</strong>
@@ -269,6 +277,26 @@ export const weatherView = {
         </div>
       `).join('');
     }
+  },
+
+  getWeatherSvg(condition = '', size = 20) {
+    const c = String(condition).toLowerCase();
+    if (c.includes('clear') || c.includes('sun')) {
+      return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+    }
+    if (c.includes('rain') || c.includes('drizzle') || c.includes('shower')) {
+      return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="16" y1="13" x2="16" y2="21"></line><line x1="8" y1="13" x2="8" y2="21"></line><line x1="12" y1="15" x2="12" y2="23"></line><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"></path></svg>`;
+    }
+    if (c.includes('thunder')) {
+      return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 9"></path><polyline points="13 11 9 17 15 17 11 23"></polyline></svg>`;
+    }
+    if (c.includes('snow')) {
+      return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"></path><line x1="8" y1="16" x2="8.01" y2="16"></line><line x1="8" y1="20" x2="8.01" y2="20"></line><line x1="12" y1="18" x2="12.01" y2="18"></line><line x1="12" y1="22" x2="12.01" y2="22"></line><line x1="16" y1="16" x2="16.01" y2="16"></line><line x1="16" y1="20" x2="16.01" y2="20"></line></svg>`;
+    }
+    if (c.includes('night') || c.includes('moon')) {
+      return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+    }
+    return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg>`;
   },
 
   updateDifferential(indoor, outdoor) {

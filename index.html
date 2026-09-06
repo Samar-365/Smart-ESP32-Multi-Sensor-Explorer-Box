@@ -21,7 +21,6 @@
     <!-- Sidebar Navigation (SRS Section 23 Website Structure) -->
     <aside class="app-sidebar" id="app-sidebar">
       <div class="sidebar-header">
-        <div class="brand-icon">📦</div>
         <div class="brand-info">
           <h1>ESP32 Explorer</h1>
           <p>IoT Multi-Sensor Box</p>
@@ -30,27 +29,62 @@
 
       <nav class="sidebar-nav">
         <a href="#dashboard" class="nav-item active" id="nav-dashboard">
-          <span class="nav-icon">🏠</span>
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </span>
           <span>Dashboard</span>
         </a>
         <a href="#analytics" class="nav-item" id="nav-analytics">
-          <span class="nav-icon">📊</span>
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </span>
           <span>Analytics</span>
         </a>
         <a href="#weather" class="nav-item" id="nav-weather">
-          <span class="nav-icon">🌤</span>
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg>
+          </span>
           <span>Weather</span>
         </a>
         <a href="#alerts" class="nav-item" id="nav-alerts">
-          <span class="nav-icon">⚠️</span>
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+          </span>
           <span>Alerts</span>
           <span class="nav-badge" id="nav-alert-badge" style="display: none;">0</span>
         </a>
         <a href="#about" class="nav-item" id="nav-about">
-          <span class="nav-icon">ℹ️</span>
+          <span class="nav-icon">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          </span>
           <span>About</span>
         </a>
       </nav>
+
+      <!-- Sidebar Hazard Injection Test Section (Sidebar Only) -->
+      <div class="sidebar-hazard-section" id="sidebar-hazard-section">
+        <div class="sidebar-section-title">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <span>Hazard Injection</span>
+        </div>
+        <div class="sidebar-hazard-grid">
+          <button class="sim-btn" id="btn-inject-gas" title="Inject Gas Spike (+420 ppm)">
+            <span>Gas Spike</span>
+          </button>
+          <button class="sim-btn" id="btn-inject-temp" title="Inject Temperature Jump (+6.5°C)">
+            <span>Heat Jump</span>
+          </button>
+          <button class="sim-btn" id="btn-inject-motion" title="Trigger PIR Motion Burst">
+            <span>PIR Pulse</span>
+          </button>
+          <button class="sim-btn" id="btn-inject-dist" title="Trigger Proximity Obstacle (4 cm)">
+            <span>Obstacle 4cm</span>
+          </button>
+        </div>
+        <button class="sim-btn-full" id="btn-toggle-offline">
+          Toggle ESP32 Offline
+        </button>
+      </div>
 
       <!-- Sidebar Footer Mode Switcher -->
       <div class="sidebar-footer">
@@ -70,9 +104,11 @@
       <header class="app-header">
         <div class="header-left">
           <button class="hamburger-btn" id="btn-hamburger" title="Toggle Sidebar">☰</button>
-          <div class="page-title-badge">
-            <h2 class="page-title" id="current-page-title">Explorer Dashboard</h2>
+          <div class="header-search-bar">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted); flex-shrink: 0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="global-search-input" placeholder="Search sensors, telemetry, alerts..." />
           </div>
+          <span class="page-title" id="current-page-title" style="display: none;">Explorer Dashboard</span>
         </div>
 
         <div class="header-right">
@@ -80,16 +116,21 @@
           <div class="device-status-pill" id="device-status-container">
             <div class="status-beacon" id="device-beacon"></div>
             <span id="device-status-text">ESP32 Online</span>
-            <div class="rssi-meter" id="device-rssi" title="Wi-Fi Signal Strength">📶 -57 dBm</div>
+            <div class="rssi-meter" id="device-rssi" title="Wi-Fi Signal Strength">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 2px;"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+              <span>-57 dBm</span>
+            </div>
             <div class="last-sync-time" id="device-last-sync" title="Last Received Packet">--:--:--</div>
           </div>
 
           <!-- Quick Actions -->
           <button class="action-btn btn-secondary" id="btn-export-csv" title="Export Historical Data to CSV (FR-09)">
-            <span>📥 Export CSV</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span>Export CSV</span>
           </button>
-          <button class="action-btn btn-secondary" id="btn-open-settings" title="Threshold & System Settings (Section 4.2)">
-            <span>⚙️ Settings</span>
+          <button class="action-btn btn-primary" id="btn-open-settings" title="Threshold & System Settings (Section 4.2)">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span>Settings</span>
           </button>
         </div>
       </header>
@@ -99,23 +140,6 @@
         <!-- Views mount here via SPA router -->
       </main>
     </div>
-  </div>
-
-  <!-- Floating Simulator Hazard Quick-Test Panel -->
-  <div class="simulator-drawer" id="simulator-drawer">
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 6px;">
-      <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--color-primary); letter-spacing: 0.05em;">🧪 Hazard Injection Test</span>
-      <span style="font-size: 10px; color: var(--text-muted);">ESP32 Sim</span>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
-      <button class="sim-btn" id="btn-inject-gas">🔥 Gas Spike (650 ppm)</button>
-      <button class="sim-btn" id="btn-inject-temp">🌡️ Heat Jump (+7°C)</button>
-      <button class="sim-btn" id="btn-inject-motion">🚶 PIR Motion Pulse</button>
-      <button class="sim-btn" id="btn-inject-dist">📏 Obstacle (4 cm)</button>
-    </div>
-    <button class="sim-btn" id="btn-toggle-offline" style="background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.3); color: #fca5a5;">
-      🔴 Toggle ESP32 Offline
-    </button>
   </div>
 
   <!-- Modal Dialog Mounting Point -->

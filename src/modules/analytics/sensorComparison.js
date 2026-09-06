@@ -24,8 +24,8 @@ export class SensorComparisonEngine {
    * @returns {Object} Comparison and correlation result
    */
   static compareSensors(readings, sensorKey1, sensorKey2) {
-    const meta1 = SENSOR_METADATA[sensorKey1] || { name: sensorKey1, unit: '', color: '#06b6d4', decimals: 1 };
-    const meta2 = SENSOR_METADATA[sensorKey2] || { name: sensorKey2, unit: '', color: '#3b82f6', decimals: 1 };
+    const meta1 = SENSOR_METADATA[sensorKey1] || { name: sensorKey1, unit: '', color: '#ffffff', decimals: 1 };
+    const meta2 = SENSOR_METADATA[sensorKey2] || { name: sensorKey2, unit: '', color: '#cbd5e1', decimals: 1 };
 
     const fallback = {
       sensor1: { key: sensorKey1, name: meta1.name, unit: meta1.unit, color: meta1.color },

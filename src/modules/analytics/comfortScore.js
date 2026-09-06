@@ -5,9 +5,9 @@
  */
 
 export const COMFORT_LEVELS = {
-  GOOD: { id: 'good', label: 'GOOD', badge: '🟢 GOOD', color: '#10b981', minScore: 75 },
-  MODERATE: { id: 'moderate', label: 'MODERATE', badge: '🟡 MODERATE', color: '#f59e0b', minScore: 50 },
-  POOR: { id: 'poor', label: 'POOR', badge: '🔴 POOR', color: '#ef4444', minScore: 0 }
+  GOOD: { id: 'good', label: 'GOOD', badge: '● GOOD', color: '#ffffff', minScore: 75 },
+  MODERATE: { id: 'moderate', label: 'MODERATE', badge: '● MODERATE', color: '#9ca3af', minScore: 50 },
+  POOR: { id: 'poor', label: 'POOR', badge: '● POOR', color: '#64748b', minScore: 0 }
 };
 
 export class ComfortScoreEngine {

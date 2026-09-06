@@ -11,21 +11,21 @@ customStore.resetToDefaults();
 const normalReading = { timestamp: new Date().toISOString(), gas: 310 };
 const normalResult = AlertRuleEvaluator.evaluateSensor(normalReading, 'gas', customStore);
 console.assert(normalResult.level === 'normal', 'Expected normal');
-console.assert(normalResult.badge.includes('🟢 Normal'), 'Badge matches 🟢 Normal');
+console.assert(normalResult.badge.includes('● Normal'), 'Badge matches ● Normal');
 console.log('✓ Normal reading evaluated correctly');
 
 // 2. Warning level evaluation (gas: 500 ppm, warning limit: 450 ppm)
 const warningReading = { timestamp: new Date().toISOString(), gas: 500 };
 const warningResult = AlertRuleEvaluator.evaluateSensor(warningReading, 'gas', customStore);
 console.assert(warningResult.level === 'warning', `Expected warning, got ${warningResult.level}`);
-console.assert(warningResult.badge.includes('🟡 Warning'), 'Badge matches 🟡 Warning');
+console.assert(warningResult.badge.includes('● Warning'), 'Badge matches ● Warning');
 console.log('✓ Warning level evaluated correctly');
 
 // 3. Critical level evaluation (gas: 620 ppm, critical limit: 600 ppm)
 const criticalReading = { timestamp: new Date().toISOString(), gas: 620 };
 const criticalResult = AlertRuleEvaluator.evaluateSensor(criticalReading, 'gas', customStore);
 console.assert(criticalResult.level === 'critical', `Expected critical, got ${criticalResult.level}`);
-console.assert(criticalResult.badge.includes('🔴 Critical'), 'Badge matches 🔴 Critical');
+console.assert(criticalResult.badge.includes('● Critical'), 'Badge matches ● Critical');
 console.log('✓ Critical level evaluated correctly matching SRS FR-05');
 
 // 4. Lower bound proximity check (distance: 3.5 cm, critical limit: <= 5.0 cm)

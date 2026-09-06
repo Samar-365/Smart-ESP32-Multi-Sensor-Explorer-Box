@@ -91,7 +91,7 @@ export class ChartManager {
     if (!canvas) return null;
     this.destroy(canvas.id);
 
-    const color = options.color || '#06b6d4';
+    const color = options.color || '#ffffff';
     const label = options.label || 'Sensor Value';
     const unit = options.unit || '';
 
@@ -121,7 +121,7 @@ export class ChartManager {
           backgroundColor: gradient,
           fill: true,
           tension: 0.35,
-          borderWidth: 2.5,
+          borderWidth: 2,
           pointRadius: values.length > 40 ? 0 : 2.5,
           pointHoverRadius: 5,
           pointBackgroundColor: color
@@ -138,10 +138,10 @@ export class ChartManager {
             labels: { color: '#94a3b8', font: { family: 'Inter', size: 12 } }
           },
           tooltip: {
-            backgroundColor: '#131d31',
-            titleColor: '#f8fafc',
-            bodyColor: '#38bdf8',
-            borderColor: 'rgba(255, 255, 255, 0.15)',
+            backgroundColor: '#0f121a',
+            titleColor: '#ffffff',
+            bodyColor: '#e2e8f0',
+            borderColor: 'rgba(255, 255, 255, 0.12)',
             borderWidth: 1,
             padding: 10,
             callbacks: {

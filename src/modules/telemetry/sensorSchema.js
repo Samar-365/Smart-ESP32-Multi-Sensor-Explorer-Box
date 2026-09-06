@@ -11,7 +11,7 @@ export const SENSOR_METADATA = {
     sensor: 'BME280',
     unit: '°C',
     icon: 'thermometer',
-    color: '#06b6d4', // Cyan
+    color: '#ffffff',
     minRange: -40,
     maxRange: 85,
     defaultWarning: 32.0,
@@ -25,7 +25,7 @@ export const SENSOR_METADATA = {
     sensor: 'BME280',
     unit: '%',
     icon: 'droplet',
-    color: '#3b82f6', // Blue
+    color: '#94a3b8',
     minRange: 0,
     maxRange: 100,
     defaultWarning: 70.0,
@@ -39,7 +39,7 @@ export const SENSOR_METADATA = {
     sensor: 'BME280',
     unit: 'hPa',
     icon: 'gauge',
-    color: '#8b5cf6', // Violet
+    color: '#cbd5e1',
     minRange: 300,
     maxRange: 1100,
     defaultWarning: 1025.0,
@@ -53,7 +53,7 @@ export const SENSOR_METADATA = {
     sensor: 'MQ-2',
     unit: 'ppm',
     icon: 'flame',
-    color: '#f59e0b', // Amber
+    color: '#ffffff',
     minRange: 0,
     maxRange: 1000,
     defaultWarning: 450.0,
@@ -67,7 +67,7 @@ export const SENSOR_METADATA = {
     sensor: 'LDR',
     unit: 'ADC',
     icon: 'sun',
-    color: '#eab308', // Yellow
+    color: '#e2e8f0',
     minRange: 0,
     maxRange: 1023,
     defaultWarning: 900.0,
@@ -81,7 +81,7 @@ export const SENSOR_METADATA = {
     sensor: 'HC-SR04',
     unit: 'cm',
     icon: 'ruler',
-    color: '#10b981', // Emerald
+    color: '#94a3b8',
     minRange: 2,
     maxRange: 400,
     defaultWarning: 15.0,
@@ -95,7 +95,7 @@ export const SENSOR_METADATA = {
     sensor: 'PIR HC-SR501',
     unit: '',
     icon: 'radar',
-    color: '#ec4899', // Pink
+    color: '#ffffff',
     minRange: 0,
     maxRange: 1,
     defaultWarning: null,

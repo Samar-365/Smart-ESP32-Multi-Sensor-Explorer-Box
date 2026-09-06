@@ -25,8 +25,8 @@ export const dashboardView = {
           <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Multi-Sensor Environmental Telemetry & Health Monitoring</p>
         </div>
         <div style="display: flex; gap: 8px;">
-          <a href="#analytics" class="action-btn btn-secondary"><span>📊 View Analytics</span></a>
-          <a href="#alerts" class="action-btn btn-secondary"><span>⚠️ Alerts Log</span></a>
+          <a href="#analytics" class="action-btn btn-secondary"><span>View Analytics</span></a>
+          <a href="#alerts" class="action-btn btn-secondary"><span>Alerts Log</span></a>
         </div>
       </div>
 
@@ -47,7 +47,7 @@ export const dashboardView = {
         <div class="comfort-details">
           <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px;">
             <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted);">ENVIRONMENT COMFORT SCORE</span>
-            <span class="comfort-badge tag-normal" id="dash-comfort-badge">🟢 GOOD</span>
+            <span class="comfort-badge tag-normal" id="dash-comfort-badge">GOOD</span>
           </div>
           <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.4;" id="dash-comfort-advice">
             Evaluating multi-factor indoor thermal, air purity, and barometric stability...
@@ -62,10 +62,12 @@ export const dashboardView = {
       <!-- 7 Sensor Telemetry Grid (SRS Section 5 & 6 FR-01/FR-02) -->
       <div class="sensor-grid" id="dashboard-sensor-grid">
         <!-- Temperature Card -->
-        <div class="sensor-card" style="--card-accent: #06b6d4;">
+        <div class="sensor-card">
           <div class="card-header">
             <div class="sensor-meta">
-              <div class="sensor-icon">🌡️</div>
+              <div class="sensor-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+              </div>
               <div class="sensor-title">
                 <h3>Temperature</h3>
                 <span>BME280 • I2C</span>
@@ -84,10 +86,12 @@ export const dashboardView = {
         </div>
 
         <!-- Humidity Card -->
-        <div class="sensor-card" style="--card-accent: #3b82f6;">
+        <div class="sensor-card">
           <div class="card-header">
             <div class="sensor-meta">
-              <div class="sensor-icon">💧</div>
+              <div class="sensor-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+              </div>
               <div class="sensor-title">
                 <h3>Humidity</h3>
                 <span>BME280 • I2C</span>
@@ -106,10 +110,12 @@ export const dashboardView = {
         </div>
 
         <!-- Pressure Card -->
-        <div class="sensor-card" style="--card-accent: #8b5cf6;">
+        <div class="sensor-card">
           <div class="card-header">
             <div class="sensor-meta">
-              <div class="sensor-icon">⏱️</div>
+              <div class="sensor-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
               <div class="sensor-title">
                 <h3>Pressure</h3>
                 <span>BME280 • I2C</span>
@@ -128,10 +134,12 @@ export const dashboardView = {
         </div>
 
         <!-- Gas Level Card -->
-        <div class="sensor-card" style="--card-accent: #f59e0b;">
+        <div class="sensor-card">
           <div class="card-header">
             <div class="sensor-meta">
-              <div class="sensor-icon">🔥</div>
+              <div class="sensor-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+              </div>
               <div class="sensor-title">
                 <h3>Gas Level</h3>
                 <span>MQ-2 • ADC 34</span>
@@ -150,10 +158,12 @@ export const dashboardView = {
         </div>
 
         <!-- Light Level Card -->
-        <div class="sensor-card" style="--card-accent: #eab308;">
+        <div class="sensor-card">
           <div class="card-header">
             <div class="sensor-meta">
-              <div class="sensor-icon">☀️</div>
+              <div class="sensor-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              </div>
               <div class="sensor-title">
                 <h3>Light Level</h3>
                 <span>LDR • ADC 35</span>
@@ -167,15 +177,17 @@ export const dashboardView = {
           </div>
           <div class="card-footer">
             <span style="color: var(--text-muted);">Range: 0–1023</span>
-            <span style="font-family: var(--font-mono); color: #eab308;" id="card-light-sub">Daylight</span>
+            <span style="font-family: var(--font-mono); color: var(--color-warning);" id="card-light-sub">Daylight</span>
           </div>
         </div>
 
         <!-- Ultrasonic Distance Card -->
-        <div class="sensor-card" style="--card-accent: #10b981;">
+        <div class="sensor-card">
           <div class="card-header">
             <div class="sensor-meta">
-              <div class="sensor-icon">📏</div>
+              <div class="sensor-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.3 8.7 8.7 21.3a2 2 0 0 1-2.8 0L2.7 18a2 2 0 0 1 0-2.8L15.3 2.7a2 2 0 0 1 2.8 0l3.2 3.2a2 2 0 0 1 0 2.8Z"/><path d="m7.5 13.5 1.5 1.5"/><path d="m10.5 10.5 1.5 1.5"/><path d="m13.5 7.5 1.5 1.5"/></svg>
+              </div>
               <div class="sensor-title">
                 <h3>Distance</h3>
                 <span>HC-SR04 • GPIO</span>
@@ -194,10 +206,12 @@ export const dashboardView = {
         </div>
 
         <!-- PIR Motion Card -->
-        <div class="sensor-card" style="--card-accent: #ec4899;">
+        <div class="sensor-card">
           <div class="card-header">
             <div class="sensor-meta">
-              <div class="sensor-icon">📡</div>
+              <div class="sensor-icon">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1A10 10 0 0 1 2 12C2 6.5 6.5 2 12 2a10 10 0 0 1 7.1 2.9"/><path d="M7.8 16.2A6 6 0 0 1 6 12a6 6 0 0 1 6-6 6 6 0 0 1 4.2 1.8"/><circle cx="12" cy="12" r="2"/></svg>
+              </div>
               <div class="sensor-title">
                 <h3>Motion Status</h3>
                 <span>PIR • GPIO 13</span>
@@ -226,7 +240,7 @@ export const dashboardView = {
         <div class="data-table-container" style="padding: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
             <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
-              <span style="color: var(--color-primary);">📈</span> Temperature Stream (°C)
+              Temperature Stream (°C)
             </h3>
             <span style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">Live 24h Buffer</span>
           </div>
@@ -238,7 +252,7 @@ export const dashboardView = {
         <div class="data-table-container" style="padding: 20px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
             <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
-              <span style="color: var(--color-blue);">💧</span> Humidity Stream (%)
+              Humidity Stream (%)
             </h3>
             <span style="font-size: 11px; color: var(--text-muted); font-family: var(--font-mono);">Live 24h Buffer</span>
           </div>
@@ -253,12 +267,11 @@ export const dashboardView = {
         <!-- Weather Card -->
         <div class="data-table-container" style="padding: 22px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary);">🌤️ Live Weather</h3>
+            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary);">Live Weather</h3>
             <a href="#weather" style="font-size: 12px; color: var(--color-primary); font-weight: 600;">Full Forecast →</a>
           </div>
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
             <div style="display: flex; align-items: center; gap: 16px;">
-              <span style="font-size: 42px;" id="dash-weather-icon">☁️</span>
               <div>
                 <div style="font-size: 32px; font-weight: 800; font-family: var(--font-mono);" id="dash-weather-temp">31°C</div>
                 <div style="font-size: 13px; color: var(--text-secondary);" id="dash-weather-desc">Partly Cloudy</div>
@@ -280,7 +293,7 @@ export const dashboardView = {
         <!-- Recent Alerts Card (SRS Section 17 FR-06) -->
         <div class="data-table-container" style="padding: 22px;">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary);">⚠️ Recent Alerts</h3>
+            <h3 style="font-size: 14px; font-weight: 700; color: var(--text-primary);">Recent Alerts</h3>
             <a href="#alerts" style="font-size: 12px; color: var(--color-primary); font-weight: 600;">View History →</a>
           </div>
           <div id="dash-recent-alerts-list" style="display: flex; flex-direction: column; gap: 10px;">
@@ -430,13 +443,13 @@ export const dashboardView = {
 
   renderCharts(history) {
     chartManager.renderTrendChart('chart-dash-temp', history, 'temperature', {
-      color: '#06b6d4',
+      color: '#ffffff',
       label: 'Temperature',
       unit: '°C'
     });
 
     chartManager.renderTrendChart('chart-dash-humidity', history, 'humidity', {
-      color: '#3b82f6',
+      color: '#94a3b8',
       label: 'Humidity',
       unit: '%'
     });
@@ -452,7 +465,6 @@ export const dashboardView = {
     const windEl = document.getElementById('dash-weather-wind');
     const presEl = document.getElementById('dash-weather-pressure');
 
-    if (iconEl) iconEl.textContent = weather.icon || '🌤️';
     if (tempEl) tempEl.textContent = `${weather.temperature}°C`;
     if (descEl) descEl.textContent = weather.condition;
     if (cityEl) cityEl.textContent = `${weather.city}, ${weather.country || 'IN'}`;
@@ -468,7 +480,7 @@ export const dashboardView = {
 
     const recent = alertHistory.query().slice(0, 4);
     if (recent.length === 0) {
-      listEl.innerHTML = '<div style="color: var(--text-muted); font-size: 13px; text-align: center; padding: 16px;">🟢 No active alerts. All systems normal.</div>';
+      listEl.innerHTML = '<div style="color: var(--text-muted); font-size: 13px; text-align: center; padding: 16px;">No active alerts. All systems normal.</div>';
       return;
     }
 

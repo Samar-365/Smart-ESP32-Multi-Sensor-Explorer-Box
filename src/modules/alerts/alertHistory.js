@@ -162,7 +162,7 @@ export class AlertHistoryStore {
         value: 620,
         unit: 'ppm',
         level: 'critical',
-        badge: '🔴 Critical',
+        badge: '● Critical',
         message: 'Gas Level (620 ppm) exceeded critical safety threshold (600 ppm).'
       },
       {
@@ -172,7 +172,7 @@ export class AlertHistoryStore {
         value: 34.0,
         unit: '°C',
         level: 'warning',
-        badge: '🟡 Warning',
+        badge: '● Warning',
         message: 'Temperature (34.0 °C) exceeded ambient warning limit (32.0 °C).'
       },
       {
@@ -182,7 +182,7 @@ export class AlertHistoryStore {
         value: 510,
         unit: 'ppm',
         level: 'warning',
-        badge: '🟡 Warning',
+        badge: '● Warning',
         message: 'Gas Level (510 ppm) exceeded warning threshold (450 ppm).'
       },
       {
@@ -192,7 +192,7 @@ export class AlertHistoryStore {
         value: 4.5,
         unit: 'cm',
         level: 'critical',
-        badge: '🔴 Critical',
+        badge: '● Critical',
         message: 'Obstacle proximity hazard (4.5 cm) breached critical threshold (5.0 cm).'
       }
     ];

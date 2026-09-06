@@ -9,9 +9,9 @@ import { SENSOR_METADATA } from '../telemetry/sensorSchema.js';
 import { thresholdStore } from './thresholdConfig.js';
 
 export const ALERT_LEVELS = {
-  NORMAL: { id: 'normal', label: 'Normal', badge: '🟢 Normal', color: '#10b981', priority: 0 },
-  WARNING: { id: 'warning', label: 'Warning', badge: '🟡 Warning', color: '#f59e0b', priority: 1 },
-  CRITICAL: { id: 'critical', label: 'Critical', badge: '🔴 Critical', color: '#ef4444', priority: 2 }
+  NORMAL: { id: 'normal', label: 'Normal', badge: '● Normal', color: '#e2e8f0', priority: 0 },
+  WARNING: { id: 'warning', label: 'Warning', badge: '● Warning', color: '#94a3b8', priority: 1 },
+  CRITICAL: { id: 'critical', label: 'Critical', badge: '● Critical', color: '#ffffff', priority: 2 }
 };
 
 export class AlertRuleEvaluator {

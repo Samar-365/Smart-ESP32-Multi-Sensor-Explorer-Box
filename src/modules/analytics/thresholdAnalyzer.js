@@ -115,14 +115,14 @@ export class ThresholdAnalyzer {
 
     // Status label & badge matching SRS Section 10
     let status = 'NORMAL';
-    let statusBadge = '🟢 NORMAL';
+    let statusBadge = '● NORMAL';
     if (isCurrentlyViolated) {
       if (operator === '<') {
         status = 'LOW';
-        statusBadge = '🔴 CRITICAL LOW';
+        statusBadge = '● CRITICAL LOW';
       } else {
         status = 'HIGH';
-        statusBadge = '🔴 HIGH';
+        statusBadge = '● HIGH';
       }
     }
 

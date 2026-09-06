@@ -21,7 +21,8 @@ export const aboutView = {
       <!-- Overview Card (SRS Section 22 FR-11) -->
       <div class="sensor-card" style="margin-bottom: 24px; padding: 26px;">
         <h3 style="font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
-          <span>📦</span> Project Overview
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          Project Overview
         </h3>
         <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px;">
           The <strong>Smart ESP32 Multi-Sensor Explorer Box</strong> is an integrated IoT edge-monitoring platform designed for physical computing, environmental safety, and advanced remote analytics. Built around the powerful dual-core ESP32 microcontroller, the device continuously samples environmental parameters, provides local visualization on an integrated TFT display, and pushes high-resolution telemetry over Wi-Fi to this web dashboard for predictive analytics, statistical modeling, and automated safety alerting.
@@ -38,7 +39,8 @@ export const aboutView = {
       <!-- System Architecture Pipeline (SRS Section 24) -->
       <div class="data-table-container" style="padding: 26px; margin-bottom: 24px;">
         <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 12px; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
-          <span>🔄</span> System Architecture Pipeline
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+          System Architecture Pipeline
         </h3>
         <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
           The hardware-to-cloud data flow pipeline follows a deterministic 6-stage telemetry lifecycle:
@@ -46,37 +48,37 @@ export const aboutView = {
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; text-align: center;">
           <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px 12px;">
-            <div style="font-size: 24px; margin-bottom: 6px;">🎯</div>
+            <div style="display: flex; justify-content: center; margin-bottom: 8px; color: var(--color-primary);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></div>
             <strong style="font-size: 13px; color: var(--color-primary); display: block;">1. Sensor Sampling</strong>
             <span style="font-size: 11px; color: var(--text-muted);">BME280, MQ-2, LDR, HC-SR04, PIR</span>
           </div>
 
           <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px 12px;">
-            <div style="font-size: 24px; margin-bottom: 6px;">⚡</div>
+            <div style="display: flex; justify-content: center; margin-bottom: 8px; color: var(--color-blue);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
             <strong style="font-size: 13px; color: var(--color-blue); display: block;">2. ESP32 Edge Core</strong>
             <span style="font-size: 11px; color: var(--text-muted);">Calibration & Rolling Averages</span>
           </div>
 
           <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px 12px;">
-            <div style="font-size: 24px; margin-bottom: 6px;">🖥️</div>
+            <div style="display: flex; justify-content: center; margin-bottom: 8px; color: var(--color-violet);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg></div>
             <strong style="font-size: 13px; color: var(--color-violet); display: block;">3. Local TFT Screen</strong>
             <span style="font-size: 11px; color: var(--text-muted);">ST7789 On-Device Dashboard</span>
           </div>
 
           <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px 12px;">
-            <div style="font-size: 24px; margin-bottom: 6px;">📶</div>
+            <div style="display: flex; justify-content: center; margin-bottom: 8px; color: var(--color-warning);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg></div>
             <strong style="font-size: 13px; color: var(--color-warning); display: block;">4. Wi-Fi / REST Sync</strong>
             <span style="font-size: 11px; color: var(--text-muted);">HTTP JSON / ThingSpeak</span>
           </div>
 
           <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px 12px;">
-            <div style="font-size: 24px; margin-bottom: 6px;">☁️</div>
+            <div style="display: flex; justify-content: center; margin-bottom: 8px; color: var(--color-normal);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path></svg></div>
             <strong style="font-size: 13px; color: var(--color-normal); display: block;">5. Cloud & Ingestion</strong>
             <span style="font-size: 11px; color: var(--text-muted);">Circular Buffer & Rules Engine</span>
           </div>
 
           <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 16px 12px;">
-            <div style="font-size: 24px; margin-bottom: 6px;">📊</div>
+            <div style="display: flex; justify-content: center; margin-bottom: 8px; color: var(--text-accent);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
             <strong style="font-size: 13px; color: var(--text-accent); display: block;">6. Web Analytics</strong>
             <span style="font-size: 11px; color: var(--text-muted);">Z-Score, Pearson r, Alerts</span>
           </div>
@@ -184,8 +186,9 @@ export const aboutView = {
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px;">
         <!-- REST JSON Schema -->
         <div class="data-table-container" style="padding: 24px;">
-          <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 10px; color: var(--color-primary);">
-            📡 Telemetry JSON Schema (SRS Section 28)
+          <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 10px; color: var(--color-primary); display: flex; align-items: center; gap: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"></path><path d="M1.42 9a16 16 0 0 1 21.16 0"></path><path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path><line x1="12" y1="20" x2="12.01" y2="20"></line></svg>
+            Telemetry JSON Schema (SRS Section 28)
           </h3>
           <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">
             The ESP32 sends or serves JSON formatted payloads conforming to the standardized data structure:
@@ -210,8 +213,9 @@ export const aboutView = {
 
         <!-- Arduino C++ Code Snippet -->
         <div class="data-table-container" style="padding: 24px;">
-          <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 10px; color: var(--color-normal);">
-            💻 Arduino C++ Telemetry Code
+          <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 10px; color: var(--color-normal); display: flex; align-items: center; gap: 8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            Arduino C++ Telemetry Code
           </h3>
           <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 14px;">
             Sample sketch for ESP32 using HTTPClient to stream data to this web dashboard:

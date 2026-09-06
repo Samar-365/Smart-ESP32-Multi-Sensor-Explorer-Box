@@ -19,7 +19,7 @@ const gasAnalysis = ThresholdAnalyzer.analyzeThreshold(gasReadings, 'gas', 500, 
 
 console.assert(gasAnalysis.currentValue === 620, `Current value expected 620, got ${gasAnalysis.currentValue}`);
 console.assert(gasAnalysis.status === 'HIGH', `Status expected HIGH, got ${gasAnalysis.status}`);
-console.assert(gasAnalysis.statusBadge.includes('🔴 HIGH'), `Badge expected 🔴 HIGH, got ${gasAnalysis.statusBadge}`);
+console.assert(gasAnalysis.statusBadge.includes('● HIGH'), `Badge expected ● HIGH, got ${gasAnalysis.statusBadge}`);
 console.assert(gasAnalysis.peakViolation === 720, `Peak violation expected 720, got ${gasAnalysis.peakViolation}`);
 console.assert(gasAnalysis.violationCount === 2, `Violation episodes expected 2, got ${gasAnalysis.violationCount}`);
 console.assert(gasAnalysis.timeAboveThresholdMs > 0, `Time above threshold should be > 0`);

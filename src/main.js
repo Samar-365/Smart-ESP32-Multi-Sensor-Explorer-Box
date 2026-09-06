@@ -124,7 +124,7 @@ function updateDeviceStatusUI(status = {}) {
   }
 
   if (rssiEl && typeof status.rssi === 'number') {
-    rssiEl.textContent = `📶 ${status.rssi} dBm`;
+    rssiEl.textContent = `${status.rssi} dBm`;
   }
 
   if (lastSyncEl && status.lastSeen) {
@@ -223,7 +223,7 @@ function setupGlobalControls() {
   if (btnOffline) {
     btnOffline.addEventListener('click', () => {
       const isOffline = appState.simulator.toggleOffline();
-      btnOffline.textContent = isOffline ? '🟢 Reconnect ESP32' : '🔴 Toggle ESP32 Offline';
+      btnOffline.textContent = isOffline ? 'Reconnect ESP32' : 'Toggle ESP32 Offline';
       if (isOffline) {
         updateDeviceStatusUI({ isOnline: false, lastSeen: null });
       }

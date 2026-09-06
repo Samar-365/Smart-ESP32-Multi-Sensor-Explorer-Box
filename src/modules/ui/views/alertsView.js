@@ -28,8 +28,8 @@ export const alertsView = {
           <p style="font-size: 13px; color: var(--text-muted); margin-top: 2px;">Automated Rule Evaluation, Violation Ledger, and Administrator Thresholds</p>
         </div>
         <div style="display: flex; gap: 8px;">
-          <button class="action-btn btn-secondary" id="btn-open-threshold-modal"><span>⚙️ Configure Thresholds</span></button>
-          <button class="action-btn btn-secondary" id="btn-clear-alerts" style="color: var(--color-critical);"><span>🗑️ Clear History</span></button>
+          <button class="action-btn btn-secondary" id="btn-open-threshold-modal"><span>Configure Thresholds</span></button>
+          <button class="action-btn btn-secondary" id="btn-clear-alerts" style="color: var(--color-critical);"><span>Clear History</span></button>
         </div>
       </div>
 
@@ -41,13 +41,13 @@ export const alertsView = {
           <span style="font-size: 11px; color: var(--text-muted);">Historical Event Ledger</span>
         </div>
 
-        <div class="sensor-card" style="padding: 18px; --card-accent: var(--color-critical);">
+        <div class="sensor-card" style="padding: 18px;">
           <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">CRITICAL BREACHES</div>
           <div style="font-size: 28px; font-weight: 800; font-family: var(--font-mono); margin: 6px 0; color: var(--color-critical);" id="alerts-stat-critical">0</div>
           <span style="font-size: 11px; color: var(--color-critical);">Severe Hazards Exceeded</span>
         </div>
 
-        <div class="sensor-card" style="padding: 18px; --card-accent: var(--color-warning);">
+        <div class="sensor-card" style="padding: 18px;">
           <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase;">WARNING ELEVATIONS</div>
           <div style="font-size: 28px; font-weight: 800; font-family: var(--font-mono); margin: 6px 0; color: var(--color-warning);" id="alerts-stat-warning">0</div>
           <span style="font-size: 11px; color: var(--color-warning);">Approaching Limit Range</span>
@@ -83,8 +83,8 @@ export const alertsView = {
               <label style="font-size: 11px; color: var(--text-muted); display: block; margin-bottom: 4px;">SEVERITY</label>
               <select id="filter-level" style="background: rgba(255,255,255,0.06); color: var(--text-primary); border: 1px solid var(--border-medium); border-radius: var(--radius-sm); padding: 7px 12px; font-size: 13px;">
                 <option value="all">All Levels</option>
-                <option value="critical">🔴 Critical Only</option>
-                <option value="warning">🟡 Warning Only</option>
+                <option value="critical">● Critical Only</option>
+                <option value="warning">● Warning Only</option>
               </select>
             </div>
 
@@ -136,7 +136,7 @@ export const alertsView = {
       <div class="modal-backdrop" id="threshold-modal-backdrop" style="display: none;">
         <div class="modal-card">
           <div class="modal-header">
-            <h3 class="modal-title">⚙️ Configure Sensor Safety Thresholds</h3>
+            <h3 class="modal-title">Configure Sensor Safety Thresholds</h3>
             <button class="close-btn" id="btn-close-modal">✕</button>
           </div>
           <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 18px;">
@@ -146,7 +146,7 @@ export const alertsView = {
           <form id="threshold-form" style="display: flex; flex-direction: column; gap: 14px;">
             <!-- Gas Threshold -->
             <div style="display: grid; grid-template-columns: 140px 1fr 1fr; gap: 10px; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle);">
-              <strong>🔥 Gas (ppm)</strong>
+              <strong>Gas (ppm)</strong>
               <div>
                 <label style="font-size: 10px; color: var(--color-warning);">Warning (≥)</label>
                 <input type="number" id="th-gas-warn" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); padding: 5px 8px; color: #fff; border-radius: var(--radius-sm);">
@@ -159,7 +159,7 @@ export const alertsView = {
 
             <!-- Temperature Threshold -->
             <div style="display: grid; grid-template-columns: 140px 1fr 1fr; gap: 10px; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle);">
-              <strong>🌡️ Temp (°C)</strong>
+              <strong>Temperature (°C)</strong>
               <div>
                 <label style="font-size: 10px; color: var(--color-warning);">Warning (≥)</label>
                 <input type="number" step="0.1" id="th-temp-warn" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); padding: 5px 8px; color: #fff; border-radius: var(--radius-sm);">
@@ -172,7 +172,7 @@ export const alertsView = {
 
             <!-- Distance Threshold -->
             <div style="display: grid; grid-template-columns: 140px 1fr 1fr; gap: 10px; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--border-subtle);">
-              <strong>📏 Proximity (cm)</strong>
+              <strong>Proximity (cm)</strong>
               <div>
                 <label style="font-size: 10px; color: var(--color-warning);">Warning (≤)</label>
                 <input type="number" step="0.5" id="th-dist-warn" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); padding: 5px 8px; color: #fff; border-radius: var(--radius-sm);">
@@ -185,7 +185,7 @@ export const alertsView = {
 
             <!-- Humidity Threshold -->
             <div style="display: grid; grid-template-columns: 140px 1fr 1fr; gap: 10px; align-items: center;">
-              <strong>💧 Humidity (%)</strong>
+              <strong>Humidity (%)</strong>
               <div>
                 <label style="font-size: 10px; color: var(--color-warning);">Warning (≥)</label>
                 <input type="number" step="1" id="th-hum-warn" style="width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); padding: 5px 8px; color: #fff; border-radius: var(--radius-sm);">
@@ -378,7 +378,7 @@ export const alertsView = {
       tbody.innerHTML = `
         <tr>
           <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 32px;">
-            🟢 No alerts match the current filter selection.
+            No alerts match the current filter selection.
           </td>
         </tr>
       `;
