@@ -4,15 +4,124 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Smart ESP32 Multi-Sensor Explorer Box</title>
+  <meta name="description" content="IoT-Based Environmental Monitoring Web Dashboard with Live Telemetry, Advanced Analytics, Weather, and Alerts." />
+  
+  <!-- Modern Typography (Inter & JetBrains Mono) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core UI Design Tokens & Styles -->
+  <link rel="stylesheet" href="/src/modules/ui/styles/tokens.css">
+  <link rel="stylesheet" href="/src/modules/ui/styles/layout.css">
+  <link rel="stylesheet" href="/src/modules/ui/styles/components.css">
 </head>
 <body>
   <div id="app">
-    <h1>Smart ESP32 Multi-Sensor Explorer Box</h1>
-    <p>Module 1 initialized.</p>
+    <!-- Sidebar Navigation (SRS Section 23 Website Structure) -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <div class="brand-icon">📦</div>
+        <div class="brand-info">
+          <h1>ESP32 Explorer</h1>
+          <p>IoT Multi-Sensor Box</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#dashboard" class="nav-item active" id="nav-dashboard">
+          <span class="nav-icon">🏠</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="#analytics" class="nav-item" id="nav-analytics">
+          <span class="nav-icon">📊</span>
+          <span>Analytics</span>
+        </a>
+        <a href="#weather" class="nav-item" id="nav-weather">
+          <span class="nav-icon">🌤</span>
+          <span>Weather</span>
+        </a>
+        <a href="#alerts" class="nav-item" id="nav-alerts">
+          <span class="nav-icon">⚠️</span>
+          <span>Alerts</span>
+          <span class="nav-badge" id="nav-alert-badge" style="display: none;">0</span>
+        </a>
+        <a href="#about" class="nav-item" id="nav-about">
+          <span class="nav-icon">ℹ️</span>
+          <span>About</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer Mode Switcher -->
+      <div class="sidebar-footer">
+        <div class="sim-control-pill">
+          <div>
+            <div style="font-weight: 600; color: var(--text-primary);" id="feed-mode-label">Mode: Simulator</div>
+            <div style="font-size: 10px; color: var(--text-muted);" id="feed-sub-label">Physics Generator</div>
+          </div>
+          <button id="btn-toggle-feed-mode">Switch</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="app-main">
+      <!-- App Header (SRS Section 5 & 18 FR-07) -->
+      <header class="app-header">
+        <div class="header-left">
+          <button class="hamburger-btn" id="btn-hamburger" title="Toggle Sidebar">☰</button>
+          <div class="page-title-badge">
+            <h2 class="page-title" id="current-page-title">Explorer Dashboard</h2>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- ESP32 Device Connectivity Pill -->
+          <div class="device-status-pill" id="device-status-container">
+            <div class="status-beacon" id="device-beacon"></div>
+            <span id="device-status-text">ESP32 Online</span>
+            <div class="rssi-meter" id="device-rssi" title="Wi-Fi Signal Strength">📶 -57 dBm</div>
+            <div class="last-sync-time" id="device-last-sync" title="Last Received Packet">--:--:--</div>
+          </div>
+
+          <!-- Quick Actions -->
+          <button class="action-btn btn-secondary" id="btn-export-csv" title="Export Historical Data to CSV (FR-09)">
+            <span>📥 Export CSV</span>
+          </button>
+          <button class="action-btn btn-secondary" id="btn-open-settings" title="Threshold & System Settings (Section 4.2)">
+            <span>⚙️ Settings</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Dynamic View Container -->
+      <main class="view-container" id="view-container">
+        <!-- Views mount here via SPA router -->
+      </main>
+    </div>
   </div>
+
+  <!-- Floating Simulator Hazard Quick-Test Panel -->
+  <div class="simulator-drawer" id="simulator-drawer">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: 6px;">
+      <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--color-primary); letter-spacing: 0.05em;">🧪 Hazard Injection Test</span>
+      <span style="font-size: 10px; color: var(--text-muted);">ESP32 Sim</span>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px;">
+      <button class="sim-btn" id="btn-inject-gas">🔥 Gas Spike (650 ppm)</button>
+      <button class="sim-btn" id="btn-inject-temp">🌡️ Heat Jump (+7°C)</button>
+      <button class="sim-btn" id="btn-inject-motion">🚶 PIR Motion Pulse</button>
+      <button class="sim-btn" id="btn-inject-dist">📏 Obstacle (4 cm)</button>
+    </div>
+    <button class="sim-btn" id="btn-toggle-offline" style="background: rgba(239, 68, 68, 0.15); border-color: rgba(239, 68, 68, 0.3); color: #fca5a5;">
+      🔴 Toggle ESP32 Offline
+    </button>
+  </div>
+
+  <!-- Modal Dialog Mounting Point -->
+  <div id="modal-container"></div>
+
+  <!-- Main JavaScript Application -->
   <script type="module" src="/src/main.js"></script>
 </body>
 </html>
