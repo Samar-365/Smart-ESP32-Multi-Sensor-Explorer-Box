@@ -1,0 +1,701 @@
+Software Requirements Specification (SRS)
+Smart ESP32 Multi-Sensor Explorer Box — Web Dashboard
+
+Version: 1.0
+Project Type: IoT-Based Environmental Monitoring System
+Platform: Web Application
+Primary Device: ESP32 Multi-Sensor Explorer Box
+
+1. Introduction
+1.1 Purpose
+
+The purpose of this web application is to provide a simple and user-friendly dashboard for monitoring and analyzing data collected by the Smart ESP32 Multi-Sensor Explorer Box.
+
+The ESP32 collects environmental data from multiple sensors, processes the readings, and transmits the data through Wi-Fi to a cloud/backend system. The website provides remote access to this information through a web browser.
+
+The project's existing architecture follows the flow:
+
+Sensor Sampling → Data Processing → Local Display → Wi-Fi/REST → Cloud → Remote User Analytics.
+
+2. Scope
+
+The website will provide the following major functions:
+
+Live Dashboard
+Advanced Analytics
+Weather Information
+Alerts
+Device/Cloud Status
+Project Information
+
+The website will focus on monitoring and analyzing data from the sensors used in the physical Explorer Box.
+
+The project hardware includes:
+
+BME280
+MQ-2 Gas Sensor
+LDR
+HC-SR04 Ultrasonic Sensor
+PIR Motion Sensor
+ESP32
+TFT display
+3. Objectives
+
+The main objectives of the website are:
+
+Display real-time sensor readings.
+Provide an overview of the current environment.
+Visualize sensor data through graphs.
+Analyze historical sensor readings.
+Calculate basic statistics.
+Detect sensor trends and abnormal readings.
+Display threshold-based alerts.
+Display live weather information.
+Show ESP32 and cloud connectivity status.
+Provide a responsive interface for desktop and mobile devices.
+4. Users
+
+The system is intended primarily for:
+
+4.1 Student/User
+
+The user can:
+
+View sensor readings.
+View graphs.
+Analyze historical data.
+View alerts.
+Check weather.
+Check device status.
+4.2 Project Administrator
+
+For the basic version, the administrator can additionally:
+
+Set sensor thresholds.
+Configure basic system settings.
+
+A complex multi-user administration system is not required for the initial version.
+
+5. Functional Requirements
+FR-01: Main Dashboard
+
+The system shall provide a main dashboard containing an overview of the Explorer Box.
+
+The dashboard shall display:
+
+Temperature
+Humidity
+Pressure
+Gas level
+Light level
+Distance
+Motion status
+Weather
+Device status
+Recent alerts
+Example
+SMART ESP32 EXPLORER BOX
+                    🟢 ONLINE
+
+┌────────────┬────────────┬────────────┬────────────┐
+│ Temperature│ Humidity   │ Pressure   │ Light      │
+│ 29.6 °C    │ 63 %       │ 1008 hPa   │ 735        │
+├────────────┼────────────┼────────────┼────────────┤
+│ Gas        │ Distance   │ Motion     │ Device     │
+│ 320 ppm    │ 24 cm      │ No Motion  │ Online     │
+└────────────┴────────────┴────────────┴────────────┘
+6. FR-02: Live Sensor Monitoring
+
+The system shall display the latest sensor values received from the ESP32.
+
+Sensor	Parameter	Unit
+BME280	Temperature	°C
+BME280	Humidity	%
+BME280	Pressure	hPa
+MQ-2	Gas Level	ppm / calibrated value
+LDR	Light Level	ADC/calibrated value
+HC-SR04	Distance	cm
+PIR	Motion	Detected / No Motion
+
+The sensor data shall be automatically updated when new readings are received.
+
+7. FR-03: Weather Information
+
+The website shall display live weather information obtained through the weather API.
+
+The project specifies the OpenWeather REST API for obtaining weather information.
+
+The weather section shall display:
+
+Outdoor temperature
+Weather condition
+Humidity
+Wind speed
+Atmospheric pressure
+Feels-like temperature
+Weather icon
+Example
+        LIVE WEATHER
+
+             ☁️
+            31°C
+        Partly Cloudy
+
+Humidity       59%
+Wind           12 km/h
+Pressure       1006 hPa
+Feels Like      33°C
+8. FR-04: Advanced Analytics
+
+The Analytics section shall allow users to analyze sensor data beyond simply viewing the current readings.
+
+This will be the main advanced feature of the website.
+
+FR-04.1 Sensor Trend Analysis
+
+The system shall display graphs showing sensor readings over time.
+
+Supported parameters:
+
+Temperature
+Humidity
+Pressure
+Gas
+Light
+Distance
+
+Motion may be displayed as an event timeline.
+
+The user shall be able to select a time period such as:
+
+Last hour
+Last 6 hours
+Last 24 hours
+Last 7 days
+Custom period
+FR-04.2 Statistical Analysis
+
+The system shall calculate basic statistics for numerical sensor data.
+
+For the selected sensor, the system shall display:
+
+Current value
+Minimum value
+Maximum value
+Average value
+Standard deviation
+Rate of change
+Example
+TEMPERATURE ANALYSIS
+
+Current       29.6 °C
+Minimum       24.1 °C
+Maximum       34.2 °C
+Average       28.7 °C
+Std. Dev.      2.4 °C
+
+Trend: ↗ Increasing
+9. FR-04.3 Trend Detection
+
+The system shall identify the general trend of sensor readings.
+
+Possible trends:
+
+Increasing
+Decreasing
+Stable
+Rapidly Changing
+
+Example:
+
+Temperature has increased significantly during the last 30 minutes.
+
+The trend shall be calculated using recently recorded sensor values.
+
+10. FR-04.4 Threshold Analysis
+
+The system shall compare sensor readings with predefined threshold values.
+
+For example:
+
+GAS ANALYSIS
+
+Current Level:     620 ppm
+Threshold:         500 ppm
+
+Status: 🔴 HIGH
+
+Threshold Violations: 4
+Highest Recorded:     720 ppm
+
+The system shall provide:
+
+Current threshold status
+Number of threshold violations
+Highest value
+Time of latest violation
+Time spent above the threshold, where sufficient historical data exists
+
+The project already specifies configurable threshold alerts, including gas spikes and motion detection.
+
+11. FR-04.5 Sensor Comparison
+
+The system shall allow users to compare two sensor parameters using a combined graph.
+
+Examples:
+
+Temperature vs Humidity
+Temperature vs Pressure
+Gas vs Time
+Light vs Motion
+
+Example:
+
+TEMPERATURE vs HUMIDITY
+
+35 ┤       ╭────╮
+30 ┤───────╯    ╰────
+25 ┤
+
+80 ┤────╮
+60 ┤    ╰────╮
+40 ┤         ╰────
+   └─────────────────
+
+This feature will help users identify relationships between environmental parameters.
+
+12. FR-04.6 Environmental Comfort Score
+
+The system may calculate a simple environmental score based on available sensor readings.
+
+Example:
+
+ENVIRONMENT SCORE
+
+       78 / 100
+
+       🟢 GOOD
+
+Temperature     ✓
+Humidity        ✓
+Gas Level       ✓
+Pressure        ✓
+
+The system shall classify the environment as:
+
+Good
+Moderate
+Poor
+
+The exact scoring formula shall be defined during implementation based on the project's chosen threshold values.
+
+13. FR-04.7 Anomaly Detection
+
+The system shall identify unusual sensor readings compared with recent historical readings.
+
+Example:
+
+⚠ ANOMALY DETECTED
+
+Gas Level
+
+Normal Range: 250–450 ppm
+Current:      720 ppm
+
+The current reading is significantly
+higher than recent readings.
+
+An anomaly can be generated when a reading exceeds a predefined threshold or deviates significantly from the recent average.
+
+14. FR-04.8 Motion Analytics
+
+The system shall provide basic analysis of PIR motion events.
+
+The system shall display:
+
+Number of motion events
+Last detected motion
+Activity period
+Current motion status
+
+Example:
+
+MOTION ANALYTICS
+
+Events Today:       18
+Last Detected:      15:42
+Peak Activity:      14:00–16:00
+
+Activity Level:     HIGH
+15. FR-04.9 Distance Analytics
+
+The website shall analyze HC-SR04 distance readings.
+
+It shall display:
+
+Current distance
+Minimum distance
+Maximum distance
+Average distance
+Distance trend
+
+Example:
+
+DISTANCE ANALYTICS
+
+Current:     24 cm
+Minimum:     12 cm
+Maximum:     180 cm
+Average:      68 cm
+
+Trend: → Stable
+16. FR-05: Alerts
+
+The website shall display alerts when sensor readings exceed configured thresholds.
+
+Alert levels
+Level	Meaning
+🟢 Normal	Reading is within normal range
+🟡 Warning	Reading is approaching/exceeding warning level
+🔴 Critical	Reading has exceeded critical threshold
+Example
+⚠️ GAS LEVEL HIGH
+
+Current Value: 620 ppm
+Threshold: 500 ppm
+Time: 10:15 PM
+17. FR-06: Alert History
+
+The system shall maintain a list of recent alerts.
+
+Example:
+
+Time	Sensor	Value	Status
+10:15 PM	Gas	620 ppm	🔴 Critical
+09:40 PM	Temperature	34°C	🟡 Warning
+09:05 PM	Gas	510 ppm	🟡 Warning
+
+The user shall be able to filter alerts by sensor and date.
+
+18. FR-07: Device Status
+
+The website shall display the current status of the ESP32.
+
+Information shall include:
+
+ESP32 Explorer Box
+
+🟢 Device Online
+
+Wi-Fi:       Connected
+Cloud:       Connected
+Last Update: 10:32:15 PM
+Signal:      -57 dBm
+
+If no data is received for a predefined period:
+
+🔴 DEVICE OFFLINE
+
+Last Update:
+10:28:12 PM
+
+The project's proposed Cloud Status page includes Wi-Fi signal strength/RSSI and cloud upload timestamps.
+
+19. FR-08: Historical Data
+
+The website shall store sensor readings received from the ESP32.
+
+Users shall be able to select a time range and view historical readings.
+
+Supported ranges:
+
+1 hour
+6 hours
+24 hours
+7 days
+Custom range
+
+Historical data shall be used by the Analytics module.
+
+20. FR-09: Data Export
+
+The system should allow users to download historical sensor data in CSV format.
+
+Example:
+
+timestamp,temperature,humidity,pressure,gas,light,distance,motion
+10:00,29.2,62,1007,310,720,25,0
+10:01,29.3,63,1008,315,728,24,0
+10:02,29.5,63,1008,320,735,24,1
+
+This is an optional feature if time permits.
+
+21. FR-10: Responsive Design
+
+The website shall work on:
+
+Desktop
+Laptop
+Tablet
+Mobile
+
+On smaller screens, sensor cards and graphs shall automatically resize or stack vertically.
+
+22. FR-11: About Project
+
+A simple About page shall provide information about the project.
+
+It shall contain:
+
+Project Overview
+
+Brief description of the Smart ESP32 Multi-Sensor Explorer Box.
+
+Sensors Used
+BME280
+MQ-2
+LDR
+HC-SR04
+PIR
+Technologies
+ESP32
+Wi-Fi
+REST API
+Cloud platform
+Web dashboard
+Applications
+
+The project presentation identifies applications including environmental monitoring, IoT laboratory learning, smart classroom/agriculture, and STEM education.
+
+23. Website Structure
+
+To keep the website simple, the recommended navigation is:
+
+SMART EXPLORER BOX
+│
+├── 🏠 Dashboard
+│
+├── 📊 Analytics
+│     ├── Trends
+│     ├── Statistics
+│     ├── Comparisons
+│     ├── Threshold Analysis
+│     └── Anomaly Detection
+│
+├── 🌤 Weather
+│
+├── ⚠ Alerts
+│
+└── ℹ About
+
+No separate login, user management, or complicated admin panel is required in the basic version.
+
+24. System Architecture
+┌───────────────────────┐
+│    SENSOR ARRAY       │
+│                       │
+│ BME280 | MQ-2 | LDR  │
+│ HC-SR04 | PIR         │
+└───────────┬───────────┘
+            │
+            ▼
+┌───────────────────────┐
+│        ESP32          │
+│                       │
+│ Data Collection       │
+│ Processing            │
+│ Wi-Fi Communication   │
+└───────────┬───────────┘
+            │
+            │ Wi-Fi
+            ▼
+┌───────────────────────┐
+│   Cloud / Backend     │
+│                       │
+│ Sensor Data           │
+│ Historical Data       │
+│ Alerts                │
+└───────────┬───────────┘
+            │
+            ▼
+┌───────────────────────┐
+│    WEB DASHBOARD      │
+│                       │
+│ Live Data             │
+│ Weather               │
+│ Analytics             │
+│ Alerts                │
+│ Device Status         │
+└───────────────────────┘
+
+The physical project architecture places the sensor array, ESP32, TFT display, Wi-Fi/REST communication and IoT cloud in this overall pipeline.
+
+25. Non-Functional Requirements
+NFR-01: Performance
+Dashboard should load quickly.
+Sensor values should update automatically.
+Graphs should render smoothly.
+Analytics calculations should complete within a reasonable time.
+NFR-02: Usability
+Interface should be simple and easy to understand.
+Important sensor values should be visible on the home page.
+Alerts should be visually distinguishable.
+Graphs should have clear labels and units.
+NFR-03: Reliability
+The website should handle temporary loss of ESP32 connectivity.
+The last received timestamp should be displayed.
+Missing sensor data should not crash the dashboard.
+NFR-04: Security
+Communication between the website and backend should use HTTPS where applicable.
+API keys should not be exposed directly in frontend code.
+Sensor data received from external sources should be validated.
+NFR-05: Compatibility
+
+The website should support modern versions of:
+
+Google Chrome
+Microsoft Edge
+Mozilla Firefox
+Mobile browsers
+26. Recommended Technology Stack
+
+Since you want the website relatively simple, I recommend:
+
+Frontend
+HTML
+CSS
+JavaScript
+Chart.js
+
+or, if you want a more modern project:
+
+React
+CSS/Tailwind
+Chart.js / Recharts
+Backend/Cloud
+
+Use the same cloud/backend approach already used by your ESP32 rather than introducing unnecessary infrastructure.
+
+Your project documentation currently mentions ThingSpeak/Blynk/MQTT for cloud telemetry.
+
+External API
+OpenWeather API
+27. Data Flow
+Live Monitoring
+Sensor
+  ↓
+ESP32
+  ↓
+Wi-Fi
+  ↓
+Cloud/Backend
+  ↓
+Website
+  ↓
+Live Dashboard
+Analytics
+Historical Sensor Data
+          ↓
+    Data Processing
+          ↓
+ ┌────────┼─────────┐
+ ↓        ↓         ↓
+Stats   Trends   Anomalies
+          ↓
+      Analytics
+       Dashboard
+28. Basic Database/Data Structure
+
+Each sensor reading should contain:
+
+{
+  "timestamp": "2026-09-06T22:30:00",
+  "temperature": 29.6,
+  "humidity": 63,
+  "pressure": 1008,
+  "gas": 320,
+  "light": 735,
+  "distance": 24,
+  "motion": false
+}
+
+The website can use these records for:
+
+Live display
+Graphs
+Statistics
+Trend detection
+Anomaly detection
+Historical analysis
+29. User Interface Requirements
+
+The website should follow a dark IoT dashboard style, similar to the project's existing presentation/dashboard concept.
+
+Main colors
+Dark navy background
+Blue/cyan primary elements
+Green for normal
+Yellow/orange for warning
+Red for critical
+Dashboard components
+┌─────────────────────────────────────────────────┐
+│ SMART ESP32 EXPLORER BOX        🟢 ONLINE       │
+├─────────────────────────────────────────────────┤
+│                                                 │
+│  TEMP       HUMIDITY       PRESSURE      LIGHT  │
+│  29.6°C       63%          1008hPa        735   │
+│                                                 │
+│  GAS        DISTANCE       MOTION               │
+│  320ppm       24cm         No Motion            │
+│                                                 │
+├───────────────────────┬─────────────────────────┤
+│ Temperature Graph     │ Humidity Graph          │
+│                       │                         │
+├───────────────────────┴─────────────────────────┤
+│                                                 │
+│ 🌤 Live Weather          ⚠ Recent Alerts        │
+│ 31°C Partly Cloudy     Gas Level High           │
+│                                                 │
+└─────────────────────────────────────────────────┘
+30. Acceptance Criteria
+
+The system shall be considered successful when:
+
+ID	Requirement
+AC-01	Dashboard displays current ESP32 sensor values
+AC-02	Temperature, humidity and pressure are displayed
+AC-03	Gas, light, distance and motion are displayed
+AC-04	Sensor readings update automatically
+AC-05	Weather information is displayed
+AC-06	Historical sensor graphs can be viewed
+AC-07	Minimum, maximum and average values are calculated
+AC-08	Sensor trends can be identified
+AC-09	Two sensor parameters can be compared
+AC-10	Threshold violations generate alerts
+AC-11	Historical alerts can be viewed
+AC-12	ESP32 online/offline status is displayed
+AC-13	Basic anomaly detection works
+AC-14	Environmental comfort score can be displayed
+AC-15	Website is usable on mobile and desktop
+31. Future Scope
+
+The following features may be added in future versions:
+
+AI environmental assistant
+Multiple ESP32 device support
+User authentication
+Push/email notifications
+Automatic report generation
+MicroSD offline data synchronization
+OTA firmware updates
+TinyML-based anomaly detection
+
+These are consistent with the future-scope concepts in your project presentation, which mentions offline logging, OTA updates, TinyML anomaly alerts and voice-assistant integration.
+
+Final Website Specification
+
+For your project, I would keep the actual implementation to five main pages:
+
+Dashboard → Analytics → Weather → Alerts → About
+
+with Analytics as the advanced part.
