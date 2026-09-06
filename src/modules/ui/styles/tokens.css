@@ -1,0 +1,109 @@
+/**
+ * Submodule 6.1: Dark IoT Design Tokens & Theme Foundations
+ * Color palette, typography, elevation, glassmorphism, and responsive scales.
+ * Fulfills SRS Section 29 (User Interface Requirements).
+ */
+
+:root {
+  /* Surface & Backgrounds (Dark IoT Navy Aesthetic) */
+  --bg-primary: #080c14;
+  --bg-secondary: #0d131f;
+  --bg-card: rgba(18, 27, 45, 0.75);
+  --bg-card-hover: rgba(24, 36, 60, 0.85);
+  --bg-card-solid: #121b2d;
+  --bg-glass: rgba(18, 27, 45, 0.65);
+  --bg-glass-heavy: rgba(12, 18, 30, 0.85);
+
+  /* Borders & Glassmorphic Highlights */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-medium: rgba(255, 255, 255, 0.12);
+  --border-accent: rgba(6, 182, 212, 0.35);
+
+  /* Primary & Accent Palette */
+  --color-primary: #06b6d4;      /* Cyan */
+  --color-primary-glow: rgba(6, 182, 212, 0.25);
+  --color-blue: #3b82f6;         /* Bright Blue */
+  --color-violet: #8b5cf6;       /* Barometric Violet */
+  --color-pink: #ec4899;         /* Radar Pink */
+
+  /* Semantic Status Palette (SRS Section 16 & 29) */
+  --color-normal: #10b981;       /* Emerald Green */
+  --color-normal-bg: rgba(16, 185, 129, 0.15);
+  --color-warning: #f59e0b;      /* Amber Yellow */
+  --color-warning-bg: rgba(245, 158, 11, 0.15);
+  --color-critical: #ef4444;     /* Crimson Red */
+  --color-critical-bg: rgba(239, 68, 68, 0.15);
+
+  /* Text & Typography */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-accent: #38bdf8;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* Shadows & Neon Luminescence */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -4px rgba(0, 0, 0, 0.6);
+  --shadow-glow-cyan: 0 0 15px rgba(6, 182, 212, 0.3);
+  --shadow-glow-green: 0 0 15px rgba(16, 185, 129, 0.35);
+  --shadow-glow-red: 0 0 15px rgba(239, 68, 68, 0.35);
+
+  /* Transitions & Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Base HTML Styling */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
